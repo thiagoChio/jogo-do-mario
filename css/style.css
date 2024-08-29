@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Garante que o HTML e o body ocupem 100% da altura da viewport */
+}
+
+.game-board {
+    width: 100vw; /* Faz o jogo ocupar toda a largura da viewport */
+    height: 100vh; /* Faz o jogo ocupar toda a altura da viewport */
+    border-bottom: 15px solid rgb(35, 160, 35);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87ceeb, #e0f6ff);
+}
+
+button {
+    background: green;
+    color: white;
+    font-family: 'Tiny5', sans-serif; /* Aplica a fonte Tiny5 ao botão */
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: none;
+    padding: 1rem;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+    z-index: 2; /* Adicionado z-index para estar acima de outros elementos */
+}
+
+button:hover {
+    border: 2px solid green;
+    background: none;
+    color: green;
+}
+
+.game-over {
+    width: 100%;
+    height: 100vh; /* Garante que a tela de game over ocupe toda a altura da viewport */
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.game-over h1 {
+    font-family: 'Tiny5', sans-serif; /* Aplica a fonte Tiny5 ao título do game over */
+    font-size: 4rem;
+    color: red;
+    text-align: center; /* Alinhamento centralizado para o texto */
+    margin-bottom: 30rem;
+}
+
+.pipe {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    right: -80px;
+    animation: pipe-animation 1.5s infinite linear;
+    z-index: 1; /* Garante que o pipe esteja atrás de Mario e do botão */
+}
+
+.mario {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2; /* Garante que Mario esteja acima do pipe */
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+.clouds {
+    position: absolute;
+    width: 550px;
+    height: 150px;
+    top: 50px;
+    animation: clouds-animation 20s infinite linear;
+}
+
+.dragao {
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    top: 400px;
+    animation: dragao-animation 5s infinite linear;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'Tiny5', sans-serif; /* Aplica a fonte Tiny5 ao score */
+    font-size: 3rem;
+    color: black;
+    z-index: 2;
+}
+
+@font-face {
+    font-family: 'Tiny5';
+    src: url('../fonts/Tiny5-Regular.ttf'); /* Atualize o caminho se necessário */
+}
+
+@keyframes pipe-animation {
+    from {
+        right: -80px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+    40% {
+        bottom: 180px;
+    }
+    60% {
+        bottom: 180px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes clouds-animation {
+    from {
+        right: -550px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes dragao-animation {
+    from {
+        right: -400px;
+    }
+    to {
+        right: 100%;
+    }
+}
